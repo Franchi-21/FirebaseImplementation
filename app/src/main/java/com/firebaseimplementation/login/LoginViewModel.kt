@@ -18,4 +18,9 @@ class LoginViewModel : ViewModel() {
         _pass.value = pass
         _isButtonEnabled.value = checkCredentials(email = email, pass = pass)
     }
+
+    fun deleteCredentials() {
+        _email.value = ""
+        _pass.value = ""
+    }
 }

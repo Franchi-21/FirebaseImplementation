@@ -27,13 +27,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.firebaseimplementation.R
+import com.firebaseimplementation.navigation.Routes
 import com.firebaseimplementation.register.RegisterViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 @Composable
-fun Register(registerVM: RegisterViewModel) {
+fun Register(registerVM: RegisterViewModel, navController: NavHostController) {
     val email by registerVM.email.observeAsState(initial = "")
     val pass by registerVM.pass.observeAsState(initial = "")
     val isLoginEnabled by registerVM.isButtonEnabled.observeAsState(initial = false)
@@ -59,7 +61,10 @@ fun Register(registerVM: RegisterViewModel) {
             email = email,
             pass = pass,
             context = context,
-        )
+        ) {
+            registerVM.deleteCredentials()
+            navController.navigate(route = Routes.LOGIN.tag)
+        }
     }
 }
 
@@ -121,6 +126,7 @@ fun RegisterButton(
     email: String,
     pass: String,
     context: Context,
+    actions: () -> Unit
 ) {
     Button(
         onClick = {
@@ -133,6 +139,7 @@ fun RegisterButton(
                             "User created successfully!",
                             Toast.LENGTH_LONG,
                         ).show()
+                        actions()
                     } else {
                         Toast.makeText(
                             context,

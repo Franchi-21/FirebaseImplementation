@@ -67,7 +67,10 @@ fun Login(loginVM: LoginViewModel, navController: NavHostController) {
             email = email,
             pass = pass,
             context = context,
-        )
+        ) {
+            loginVM.deleteCredentials()
+            navController.navigate(route = Routes.MAIN_SCREEN.tag)
+        }
         Spacer(modifier = Modifier.size(10.dp))
         CreateAccountNotice(navController = navController)
     }
@@ -145,6 +148,7 @@ fun LoginButton(
     email: String,
     pass: String,
     context: Context,
+    actions: () -> Unit
 ) {
     Button(
         onClick = {
@@ -158,6 +162,7 @@ fun LoginButton(
                             "Welcome!",
                             Toast.LENGTH_LONG,
                         ).show()
+                        actions()
                     } else {
                         Log.d("Successful", "No")
                         Toast.makeText(
