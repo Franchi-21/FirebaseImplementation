@@ -12,12 +12,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.firebaseimplementation.R
-import com.firebaseimplementation.adduser.AddUserViewModel
 import com.firebaseimplementation.mainscreen.templates.CreateIcon
 import com.firebaseimplementation.navigation.Routes
 
 @Composable
-fun MainScreen(navController: NavHostController, addVM: AddUserViewModel) {
+fun MainScreen(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Icons(navController = navController)
         LazyColumn {
@@ -38,6 +37,13 @@ fun Icons(navController: NavHostController) {
             modifier = Modifier.clickable {
                 navController.navigate(route = Routes.ADD_USER.tag)
             },
+        )
+        CreateIcon(
+            icon = R.drawable.ic_launcher_background,
+            description = "showUsers",
+            modifier = Modifier.clickable {
+                navController.navigate(route = Routes.GET_USERS.tag)
+            }
         )
         CreateIcon(
             icon = R.drawable.edit,

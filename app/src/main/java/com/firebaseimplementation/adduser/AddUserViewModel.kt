@@ -1,11 +1,13 @@
 package com.firebaseimplementation.adduser
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.firebaseimplementation.adduser.data.AddUserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,7 +29,7 @@ class AddUserViewModel @Inject constructor(
     }
 
     fun onSaveCredentials(name: String, age: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             addUserRepo.insertUser(name = name, age = age)
         }
     }

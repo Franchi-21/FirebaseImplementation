@@ -1,4 +1,4 @@
-package com.firebaseimplementation.adduser.data.database.entities
+package com.firebaseimplementation.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

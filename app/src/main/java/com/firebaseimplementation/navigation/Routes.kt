@@ -7,4 +7,5 @@ enum class Routes(val tag: String) {
     ADD_USER(tag = "addUser"),
     EDIT_USER(tag = "editUser"),
     DEL_USER(tag = "delUser"),
+    GET_USERS(tag = "getAllUsers")
 }

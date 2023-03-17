@@ -1,8 +1,8 @@
-package com.firebaseimplementation.adduser.di
+package com.firebaseimplementation.di
 
 import android.content.Context
 import androidx.room.Room
-import com.firebaseimplementation.adduser.data.database.UserDatabase
+import com.firebaseimplementation.database.UserDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,8 @@ object UserModule {
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, UserDatabase::class.java, "user_table")
+        Room
+            .databaseBuilder(context, UserDatabase::class.java, "user_table")
             .build()
 
     @Singleton
