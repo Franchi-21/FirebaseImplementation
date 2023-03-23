@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.firebaseimplementation.adduser.AddUserViewModel
+import com.firebaseimplementation.editusers.EditUsersViewModel
 import com.firebaseimplementation.getusers.GetUsersViewModel
 import com.firebaseimplementation.login.LoginViewModel
 import com.firebaseimplementation.navigation.MainNavigation
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
     private val registerVM: RegisterViewModel by viewModels()
     private val addUserVM: AddUserViewModel by viewModels()
     private val getUserVM: GetUsersViewModel by viewModels()
+    private val editUsersVM: EditUsersViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -24,7 +26,8 @@ class MainActivity : ComponentActivity() {
                 loginVM = loginVM,
                 registerVM = registerVM,
                 addUserVM = addUserVM,
-                getUserVM = getUserVM
+                getUserVM = getUserVM,
+                editUsersVM = editUsersVM,
             )
         }
     }

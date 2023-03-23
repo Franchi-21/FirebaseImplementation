@@ -16,15 +16,17 @@ import javax.inject.Inject
 class GetUsersViewModel @Inject constructor(
     private val getUsersImpl: GetUsersImpl,
 ) : ViewModel() {
-    private val _showUserList = MutableStateFlow<List<User>>(listOf())
+    private val _showUserList = MutableStateFlow<List<User>>(emptyList())
     val showUserList: StateFlow<List<User>> = _showUserList
 
-    fun getAllUsers() = viewModelScope.launch {
-        getUsersImpl
-            .getAllUsers()
-            .flowOn(Dispatchers.IO)
-            .collect {
-                _showUserList.value = it
-            }
+    fun getAllUsers() {
+        viewModelScope.launch {
+            getUsersImpl
+                .getAllUsers()
+                .flowOn(Dispatchers.IO)
+                .collect {
+                    _showUserList.value = it
+                }
+        }
     }
 }

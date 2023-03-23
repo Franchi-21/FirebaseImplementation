@@ -20,6 +20,6 @@ interface UserDao {
     @Query("UPDATE user_table SET name = :name, age = :age WHERE name = :oldName")
     suspend fun updateUser(name: String, age: Int, oldName: String)
 
-    @Query("SELECT 1 FROM user_table WHERE name = :name")
+    @Query("SELECT COUNT(1) FROM user_table WHERE name = :name")
     suspend fun exists(name: String): Int
 }
