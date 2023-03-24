@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.firebaseimplementation.adduser.AddUserViewModel
+import com.firebaseimplementation.deleteusers.DeleteUserViewModel
 import com.firebaseimplementation.editusers.EditUsersViewModel
 import com.firebaseimplementation.getusers.GetUsersViewModel
 import com.firebaseimplementation.login.LoginViewModel
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
     private val addUserVM: AddUserViewModel by viewModels()
     private val getUserVM: GetUsersViewModel by viewModels()
     private val editUsersVM: EditUsersViewModel by viewModels()
+    private val deleteUserVM: DeleteUserViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
                 addUserVM = addUserVM,
                 getUserVM = getUserVM,
                 editUsersVM = editUsersVM,
+                deleteUserVM = deleteUserVM,
             )
         }
     }

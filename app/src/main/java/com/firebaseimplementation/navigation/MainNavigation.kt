@@ -6,6 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.firebaseimplementation.adduser.AddUserViewModel
 import com.firebaseimplementation.adduser.ui.AddUser
+import com.firebaseimplementation.deleteusers.DeleteUserViewModel
+import com.firebaseimplementation.deleteusers.ui.DeleteUser
 import com.firebaseimplementation.editusers.EditUsersViewModel
 import com.firebaseimplementation.editusers.ui.EditUsers
 import com.firebaseimplementation.getusers.GetUsersViewModel
@@ -23,6 +25,7 @@ fun MainNavigation(
     addUserVM: AddUserViewModel,
     getUserVM: GetUsersViewModel,
     editUsersVM: EditUsersViewModel,
+    deleteUserVM: DeleteUserViewModel,
 ) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.LOGIN.tag) {
@@ -43,6 +46,9 @@ fun MainNavigation(
         }
         composable(route = Routes.EDIT_USER.tag) {
             EditUsers(editUsersVM = editUsersVM)
+        }
+        composable(route = Routes.DEL_USER.tag) {
+            DeleteUser(deleteUserVM = deleteUserVM)
         }
     }
 }
