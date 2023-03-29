@@ -1,6 +1,6 @@
 # Firebase implementation project
 
-This project is intended to represent a simple login and register with Room for deleting, inserting, editing and showing users by giving their names and ages
+This project is intended to represent a simple login and register with Room for deleting, inserting, editing and showing users by inputting their names and ages
 
 Tools I used to make this project:
 - Firebase, precisely Authentication
